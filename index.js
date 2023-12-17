@@ -7,7 +7,7 @@ const puppeteer = require('puppeteer');
 const PORT = process.env.PORT || 4000;
 
 app.get("/", (req, res) => {
-    res.send("Render puppeteer server is up!")
+    res.send("New message!")
 });
 
 app.get("/scrape", (req, res) => {
