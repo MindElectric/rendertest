@@ -1,9 +1,21 @@
 const puppeteer = require("puppeteer");
+require("dotenv").config();
 
 const scrapeLogic = async (res) => {
 
     // Launch the browser and open a new blank page
-    const browser = await puppeteer.launch({ headless: false, defaultViewport: null, args: ['--start-maximized'] });
+    const browser = await puppeteer.launch({
+        executablePath: process.env.NODE_ENV === 'production' ? process.env.PUPPETEER_EXECUTABLE_PATH
+            : puppeteer.executablePath(),
+        headless: false, defaultViewport: null,
+        args: [
+            '--start-maximized',
+            '--disable-setuid-sandbox',
+            '--no-sandbox',
+            '--single-process',
+            '--no-zygote'
+        ]
+    });
 
     try {
         const page = await browser.newPage();
