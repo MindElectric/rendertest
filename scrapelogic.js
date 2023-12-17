@@ -12,8 +12,8 @@ const scrapeLogic = async (res) => {
             '--start-maximized',
             '--disable-setuid-sandbox',
             '--no-sandbox',
-            '--single-process',
-            //'--no-zygote'
+            //'--single-process',
+            '--no-zygote'
         ]
     });
 
