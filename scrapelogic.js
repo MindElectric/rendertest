@@ -13,7 +13,7 @@ const scrapeLogic = async (res) => {
             '--disable-setuid-sandbox',
             '--no-sandbox',
             '--single-process',
-            '--no-zygote'
+            //'--no-zygote'
         ]
     });
 
@@ -21,9 +21,7 @@ const scrapeLogic = async (res) => {
         const page = await browser.newPage();
 
         // Navigate the page to a URL
-        await page.goto('https://www.bing.com/', {
-            waitUntil: 'networkidle0'
-        });
+        await page.goto('https://www.bing.com/');
 
         // Set screen size
         await page.setViewport({ width: 1080, height: 1024 });
