@@ -5,16 +5,16 @@ const scrapeLogic = async (res) => {
 
     // Launch the browser and open a new blank page
     const browser = await puppeteer.launch({
-        executablePath: process.env.NODE_ENV === 'production' ? process.env.PUPPETEER_EXECUTABLE_PATH
-            : puppeteer.executablePath(),
-        headless: false, defaultViewport: null,
         args: [
-            '--start-maximized',
-            '--disable-setuid-sandbox',
-            '--no-sandbox',
-            //'--single-process',
-            '--no-zygote'
-        ]
+            "--disable-setuid-sandbox",
+            "--no-sandbox",
+            "--single-process",
+            "--no-zygote",
+        ],
+        executablePath:
+            process.env.NODE_ENV === "production"
+                ? process.env.PUPPETEER_EXECUTABLE_PATH
+                : puppeteer.executablePath(),
     });
 
     try {
@@ -32,8 +32,6 @@ const scrapeLogic = async (res) => {
 
         await searchInput.type('Puppeteer js');
 
-
-        await page.keyboard.press('Enter');
 
         const url = await page.url();
 
